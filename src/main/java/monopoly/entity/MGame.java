@@ -14,6 +14,9 @@ public class MGame {
     private static final int MIN_PLAYERS = 2;
     private static final int MAX_PLAYERS = 8;
 
+    private static final String INVALID_MIN_PLAYERS = "The number of players must be at least %s";
+    private static final String INVALID_MAX_PLAYERS = "The number of players must be less than or equal to %s";
+
     public MGame() {
         // Set default round start at 1
         this.roundCnt = 1;
@@ -29,7 +32,7 @@ public class MGame {
 
     public void addPlayer(Player... players) {
         if ((this.players.size() + players.length) > MAX_PLAYERS) {
-            throw new IllegalArgumentException("The number of players must be less than or equal to %s".formatted(MAX_PLAYERS));
+            throw new IllegalArgumentException(INVALID_MAX_PLAYERS.formatted(MAX_PLAYERS));
         }
 
         this.players.addAll(List.of(players));
@@ -60,10 +63,16 @@ public class MGame {
     }
 
     public void playGame() {
+        validate();
         while (this.roundCnt <= this.lastRound) {
             playRound();
             roundCnt++;
         }
+    }
+
+    private void validate() {
+        if (this.players.size() < MIN_PLAYERS) throw new IllegalArgumentException(INVALID_MIN_PLAYERS.formatted(MIN_PLAYERS));
+        if (this.players.size() > MAX_PLAYERS) throw new IllegalArgumentException(INVALID_MAX_PLAYERS.formatted(MAX_PLAYERS));
     }
 
     private void playRound() {
