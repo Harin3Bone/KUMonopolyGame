@@ -9,8 +9,8 @@ public class Die {
     private static final Random random = new Random();
 
     public Die() {
-        // Set face value default to 1 because int default is 0 and dice face value must start from 1
-        this.faceValue = 1;
+        // faceValue must in range 1-6
+        roll();
     }
 
     public void roll() {
