@@ -24,7 +24,7 @@ public class Board {
     public void init() {
         // Initialize the board with MAX_SQUARES
         for (var i = 0; i < MAX_SQUARES; i++) {
-            var pos = i+1;
+            var pos = i + 1;
             squares.add(new Square("square_" + pos, i));
         }
     }
@@ -45,11 +45,10 @@ public class Board {
     }
 
     public Square getLocation(Square oldLoc, int fvTot) {
-        var newLoc = oldLoc.getPosition() + fvTot;
+        var newLoc = (oldLoc.getPosition() + fvTot - 1) % MAX_SQUARES + 1;
         if (newLoc >= 0 && newLoc < squares.size()) {
             return squares.get(newLoc);
         }
         throw new IllegalArgumentException(INVALID_LOCATION);
     }
-
 }
