@@ -65,8 +65,10 @@ public class MGame {
     public void playGame() {
         validate();
         while (this.roundCnt <= this.lastRound) {
+            System.out.println("Round %s".formatted(this.roundCnt));
             playRound();
             roundCnt++;
+            System.out.println("********************************************************");
         }
     }
 
@@ -77,7 +79,15 @@ public class MGame {
 
     private void playRound() {
         for (var player : players) {
+            var playerName = player.getName();
+
+            System.out.println("Player %s turn".formatted(playerName));
+            System.out.println("Player %s current location: %s".formatted(playerName, player.getPiece().getLocation().getName()));
+
             player.takeTurn(board, DICES);
+
+            System.out.println("Player %s move to location: %s".formatted(playerName, player.getPiece().getLocation().getName()));
+            System.out.println("--------------------------------------");
         }
     }
 

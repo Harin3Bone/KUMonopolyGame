@@ -33,8 +33,10 @@ public class Player {
         var index = 0;
         for (var dice : dices) {
             dice.roll();
+            System.out.println("Dice " + (++index) + " face value: " + dice.getFaceValue());
             fvTot += dice.getFaceValue();
         }
+        System.out.println("Total face value: " + fvTot);
 
         var oldLoc = piece.getLocation();
         var newLoc = board.getLocation(oldLoc, fvTot);
