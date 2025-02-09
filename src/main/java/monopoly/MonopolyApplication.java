@@ -1,8 +1,8 @@
-package main.java.monopoly;
+package monopoly;
 
-import main.java.monopoly.entity.MGame;
-import main.java.monopoly.entity.Piece;
-import main.java.monopoly.entity.Player;
+import monopoly.entity.MGame;
+import monopoly.entity.Piece;
+import monopoly.entity.Player;
 
 import java.util.List;
 

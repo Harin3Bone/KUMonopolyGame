@@ -1,4 +1,4 @@
-package main.java.monopoly.entity;
+package monopoly.entity;
 
 public class Piece {
 
